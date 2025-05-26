@@ -3,7 +3,7 @@ name: Data Collection Workflow
 on:
   schedule:
     # Monday to Thursday at 5:00 PM ET (21:00 UTC)
-    - cron: '0 21 * * 1-4'
+    - cron: '0 13 * * 1-4'  # '0 21 * * 1-4'
     # Friday at 5:00 PM ET (21:00 UTC)
     - cron: '0 21 * * 5'
     # Monday to Friday at 5:30 PM Singapore time (09:30 UTC)
@@ -65,7 +65,7 @@ jobs:
           # Copy the patch file first
           cp collector/finviz_patch.py .
           python collector/finviz.py --data-type all
-        timeout-minutes: 30
+        timeout-minutes: 50
       
       - name: Commit and push changes
         run: |
@@ -90,9 +90,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # Add only the necessary libraries for sg_spot.py and hk.py
-          # Modify this based on the actual requirements of these scripts
-          pip install pandas pytz
+          # Add necessary libraries for sg_spot.py and hk.py
+          pip install pandas pytz requests openpyxl
       
       - name: Run Singapore and Hong Kong scripts
         run: |
