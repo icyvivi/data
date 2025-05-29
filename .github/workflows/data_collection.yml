@@ -1,5 +1,8 @@
 name: Data Collection Workflow
 
+permissions:
+  contents: write
+  
 on:
   schedule:
     # Monday to Thursday at 5:00 PM ET (21:00 UTC)
