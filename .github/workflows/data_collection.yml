@@ -46,7 +46,7 @@ jobs:
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'actions@github.com'
           git add data/
-          git commit -m "Data collection: overview ($(date))" || echo "No changes to commit"
+          git commit -m "Data collection: overview ($(date +'%Y-%m-%d %H:%M:%S %z'))" || echo "No changes to commit"
           git pull --rebase origin main
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
 
@@ -82,7 +82,7 @@ jobs:
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'actions@github.com'
           git add data/
-          git commit -m "Data collection: full finviz ($(date))" || echo "No changes to commit"
+          git commit -m "Data collection: full finviz ($(date +'%Y-%m-%d %H:%M:%S %z'))" || echo "No changes to commit"
           git pull --rebase origin main
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
 
@@ -117,7 +117,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add data/
-          git commit -m "Data collection: SG and HK ($(date))" || echo "No changes to commit"
+          git commit -m "Data collection: SG and HK ($(date +'%Y-%m-%d %H:%M:%S %z'))" || echo "No changes to commit"
           git pull --rebase origin main
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
 
