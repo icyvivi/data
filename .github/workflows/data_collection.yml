@@ -2,7 +2,7 @@ name: Data Collection Workflow
 
 permissions:
   contents: write
-  
+
 on:
   schedule:
     # Monday to Thursday at 5:00 PM ET (21:00 UTC)
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT_TOKEN_GITHUB }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
       
       - name: Set up Python
@@ -48,7 +48,7 @@ jobs:
           git add data/
           git commit -m "Data collection: overview ($(date))" || echo "No changes to commit"
           git pull --rebase origin main
-          git push https://${{ secrets.PAT_TOKEN_GITHUB }}@github.com/${{ github.repository }}.git HEAD:main
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
 
   run_finviz_main:
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT_TOKEN_GITHUB }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
       
       - name: Set up Python
@@ -84,7 +84,7 @@ jobs:
           git add data/
           git commit -m "Data collection: full finviz ($(date))" || echo "No changes to commit"
           git pull --rebase origin main
-          git push https://${{ secrets.PAT_TOKEN_GITHUB }}@github.com/${{ github.repository }}.git HEAD:main
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
 
   run_sg_hk:
     runs-on: ubuntu-latest
@@ -93,7 +93,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT_TOKEN_GITHUB }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
       
       - name: Set up Python
@@ -119,5 +119,5 @@ jobs:
           git add data/
           git commit -m "Data collection: SG and HK ($(date))" || echo "No changes to commit"
           git pull --rebase origin main
-          git push https://${{ secrets.PAT_TOKEN_GITHUB }}@github.com/${{ github.repository }}.git HEAD:main
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
 
